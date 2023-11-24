@@ -1,36 +1,15 @@
-% プロジェクト学習中間報告書書式テンプレート ver.1.0 (utf-8)
-
-% 両面印刷する場合は `openany' を削除する
 \documentclass[openany,11pt,papersize,dvipdfm]{jsbook}
-
-% 報告書提出用スタイルファイル
-\usepackage[final]{funpro}%最終報告書
-% \usepackage[middle]{funpro}%中間報告書
-
-% 画像ファイル (EPS, EPDF, PNG) を読み込むために
+\usepackage[final]{funpro}
 \usepackage{graphicx}
 
 \def\hissu{\bgroup\color{red}}
 \def\endhissu{\egroup}
 
-% ここから -->
-%\usepackage{calc,ifthen}
-%\newcounter{hoge}
-%\newcommand{\fake}[1]{\whiledo{\thehoge<70}{#1\stepcounter{hoge}}%
-%  \setcounter{hoge}{0}}
-% <-- ここまで 削除してもよい
-
-% 年度の指定
 \thisYear{2023}
 
 % プロジェクト名
-\jProjectName{使ってもらって学ぶフィールド指向システムデザイン 2023}
-
-% [簡易版のプロジェクト名]{正式なプロジェクト名}
-% 欧文のプロジェクト名が極端に長い（2行を超える）場合は、短い記述を
-% 任意引数として渡す。
-%\eProjectName[Making Delicious curry]{How to make delicious curry of Hakodate}
-\eProjectName{Field Oriented System Design Learning by Users' Feedback 2023}
+\jProjectName[すうぃふと 2023]{使ってもらって学ぶフィールド指向システムデザイン 2023}
+\eProjectName[Swift 2023]{Field Oriented System Design Learning by Users' Feedback 2023}
 
 % <プロジェクト番号>-<グループ名>
 \ProjectNumber{3-A}
@@ -39,15 +18,15 @@
 \jGroupName{グループ~A}
 \eGroupName{Group~A}
 
-% プロジェクトリーダ      注意：学籍番号不用
+% プロジェクトリーダ
 \ProjectLeader{佐々木虎太郎}{Kotaro~Sasaki}
 
-% グループリーダ      注意：学籍番号不用
+% グループリーダ
 \GroupLeader  {及川寛太}{Kanta~Oikawa}
 
 % メンバー数
 \SumOfMembers{9}
-% グループメンバ      注意：学籍番号不用
+% グループメンバ
 \GroupMember {1}{及川寛太}{Kanta~Oikawa}
 \GroupMember {2}{下村蒔里萌}{Marimo~Shimomura}
 \GroupMember {3}{大津武琉}{Takeru~Otsu}
@@ -56,7 +35,6 @@
 
 % 指導教員
 \jadvisor{伊藤恵,南部美砂子,奥野拓,元木環,石尾隆}
-% 複数人数いる場合はカンマ(,)で区切る。カンマの前後に空白は入れない。
 \eadvisor{Kei~Ito,Misako~Nambu,Taku~Okuno,Tamaki~Motoki,Takashi~Ishio}
 
 % 論文提出日
