@@ -1,52 +1,81 @@
 \chapter{プロダクト}
 
 \section{アプリケーションのコンセプト}
-BuLoはバスに乗り遅れたくないが，バスを効率的に使いたいひとのためのバスロケーションアプリである．
+BuLoは，バスに乗り遅れたくないがバスを効率的に使いたいひとのためのバスロケーションアプリである．
 従来のバスロケーションアプリやGoogle Mapsなどの地図アプリとは異なり，バスの位置や遅延情報をリアルタイムにわかりやすく把握することができる．
 また，本サービスは“ひとめぼれ”するバスロケーションアプリをめざしている．本グループは”ひとめぼれ”を以下の2つと考える．
 まず1つ目にアプリのデザインに対する”ひとめぼれ”である．これはアプリを使うきっかけとなるものである．
-2つ目にアプリ全体を通しての体験への”ひとめぼれ”である．これは，アプリを使い続けるきっかけになると考える．
+2つ目にアプリ全体を通しての体験への”ひとめぼれ”である．これはアプリを使い続けるきっかけになると考える．
 \bunseki{下村蒔里萌}
 
 \section{機能}
 \subsection{住所を登録}
     このアプリの対象ユーザは通勤・通学にバスを利用する人であるため，自宅と職場の住所を登録する機能を搭載している．
     対象ユーザの使用するルートは変わらないことが予測できるため，最初に住所を登録をすることで2回目以降は再度住所の検索をする手間を省いている．
-    図\ref{fig:feature_register}中の左から2枚目の画面では現在地の住所を表示させている．
-    左から3枚目の画面では「はこだて」と入力して，それに対しての予測を表示させている．
+    図\ref{fig:feature_register}の左から3枚目の画面では，現在地の住所をサジェストしている．
+    住所の入力では，キーワードに対しての予測をサジェストしている．
+    \pagebreak
     \begin{figure}
         \centering
         \includegraphics[width=14cm]{images/feature_register.png}
-        \caption{Register View}
+        \caption{住所を登録}
         \label{fig:feature_register}
     \end{figure}
-\subsection{Time-Distance View}
+\subsection{Time-Distance ListとRoute View}
+    ユーザが住所を登録したあと，ユーザがアプリを開いた際は図\ref{fig:feature_td}の画面を表示する．
+    図\ref{fig:feature_td}の左側の画面は，後述するTime-Distance Viewの一覧である．
+    これは，バスがユーザの乗車するバス停に到着する順に表示している．
+    図\ref{fig:feature_td}の右側の画面は，各Time-Distance Viewをタップした際に表示される画面である．
+    タップしたTime-Distance Viewと，ユーザとそのバスの現在地をマップ上に表示している．
+    \pagebreak
+    \begin{figure}
+        \centering
+        \includegraphics[width=14cm]{images/feature_td.png}
+        \caption{Time-Distance ViewとRoute View}
+        \label{fig:feature_td}
+    \end{figure}
+\subsection{Time-Distance Viewの詳細}
     Time-Distance Viewとは，ユーザの現在地，バスの現在地，バス停の3点を時間的グラフに表したものである．
-    これにより，ユーザは実装方法は図\label{fig:feature_timedistanceview}に示す．
-    図\ref{fig:feature_timedistanceview}では以下の状況を考えている．
+    これにより，ユーザは「バスに間に合うかどうか」，「バス停でどのくらい待つか」がひとめでわかる．
+    実装方法は図\ref{fig:feature_timedistanceview}に示す．
+    また，図\ref{fig:feature_timedistanceview}では以下の状況を考えている．
+    \pagebreak
+    \begin{quote}
+        \begin{itemize}
+            \item ユーザの目的地は自宅(田屋入口の近く)
+            \item 現在地からの最寄りのバス停ははこだて未来大学駅
+            \item ユーザが乗るバスは55G
+            \item ユーザが自宅に行くまでにかかる料金は220円
+            \item バスは5分後にはこだて未来大学駅に到着する
+            \item 現在地からはこだて未来大学駅まで徒歩で3分かかる
+            \item 自宅には16:25に到着する
+        \end{itemize}
+    \end{quote}
     \begin{figure}
         \centering
         \includegraphics[width=14cm]{images/feature_timedistanceview.png}
         \caption{Time-Distance View}
-        \ref{fig:feature_timedistanceview}
+        \label{fig:feature_timedistanceview}
     \end{figure}
-    \begin{quote}
-        \begin{itemize}
-            \item 目的地は職場
-            \item 現在地からの最寄りのバス停は亀田支所前
-            \item 乗るバスは55G
-            \item 最寄りバス停から目的地付近のバス停までの料金は220円
-            \item バスが5分後に亀田支所前に到着
-            \item 亀田支所前まで歩きで3分
-        \end{itemize}
-    \end{quote}
-\subsection{Time-Distance List}
-\subsection{Route View}
+    \pagebreak
+    図\ref{fig:feature_timedistanceview2}では，想定されるTime-Distance Viewの例を示している．
+    図\ref{fig:feature_timedistanceview2}の左から，「ユーザがバスに安心して乗れる状態」
+    「ユーザがバス停でかなり待つことが予想できるため，バス停以外の場所で時間をつぶすことができる」
+    「ユーザよりバスの方が先にバス停に到着するが，走ることでバスに乗ることができる」状態である．
+    \pagebreak
+    \begin{figure}
+        \centering
+        \includegraphics[width=14cm]{images/feature_timedistanceview2.png}
+        \caption{Time-Distance Viewの例}
+        \label{fig:feature_timedistanceview2}
+    \end{figure}
 \bunseki{下村蒔里萌}
 
 \section{デザインシステム}
+    
 \bunseki{下村蒔里萌}
 
 \section{システムの構成}
 \subsection{アーキテクチャ図}
 \subsection{使用した技術}
+\bunseki{}
