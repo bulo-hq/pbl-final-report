@@ -3,7 +3,7 @@
 \section{アプリケーションのコンセプト}
 BuLoは，バスに乗り遅れたくないがバスを効率的に使いたいひとのためのバスロケーションアプリである．
 従来のバスロケーションアプリやGoogle Mapsなどの地図アプリとは異なり，バスの位置や遅延情報をリアルタイムにわかりやすく把握することができる．
-また，本サービスは“ひとめぼれ”するバスロケーションアプリをめざしている．本グループは”ひとめぼれ”を以下の2つと考える．
+また，本アプリは“ひとめぼれ”するバスロケーションアプリをめざしている．本グループは”ひとめぼれ”を以下の2つと考える．
 まず1つ目にアプリのデザインに対する”ひとめぼれ”である．これはアプリを使うきっかけとなるものである．
 2つ目にアプリ全体を通しての体験への”ひとめぼれ”である．これはアプリを使い続けるきっかけになると考える．
 \bunseki{下村蒔里萌}
@@ -72,7 +72,53 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
 \bunseki{下村蒔里萌}
 
 \section{デザインシステム}
-    
+    本アプリは，簡潔で見やすい，情報量の絞られたデザインを目指している．
+    そのため，以下のデザインシステムを設定した．
+\subsection{Colors}
+    本アプリのカラーパレットは図\ref{fig:feature_colors}のように設定した．
+    16進数のカラーコード(例：\#FF3B30)に具体的な値を与え使いやすくしたプリミティブトークン(例：red)と，
+    特定の用途別に定義したセマンティックトークン(例：alert)を定義している．
+    Figma上でのプロトタイプや実装では，セマンティックトークンを使用した．
+    \pagebreak
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{images/colors.png}
+        \caption{デザインシステム Colors}
+        \label{fig:feature_colors}
+    \end{figure}
+\subsection{Typographies}
+    本アプリのフォントは図\ref{fig:typographies}のように設定した．
+    \pagebreak
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{images/typographies.png}
+        \caption{デザインシステム Typographies}
+        \label{fig:typographies}
+    \end{figure}
+\subsection{Icons}
+    本アプリのアイコンは図\ref{fig:icons}のように設定した．
+    本アプリでは主にMaterial Design Iconsを使用し，足りないものはPictogrammersを使用した．
+        \pagebreak
+        \begin{figure}
+            \centering
+            \includegraphics[width=10cm]{images/icons.png}
+            \caption{デザインシステム Icons}
+            \label{fig:icons}
+        \end{figure}
+\subsection{Shapes and Others}
+    本アプリの形状とその他のデザインは図\ref{fig:shapes}のように設定した．
+    ElavationやBlurは2つのレイヤー間のz軸上の深度を表す．
+    インターフェイス上の最も上位の要素をより強調することで、アクションの重要度を伝える．
+    Cornersは角丸を表し，4, 8, 16と3種類の数字を用意し、コンポーネントの短辺に合わせて角丸の数値を可変する．
+    角丸を使用した図形の中に、角丸を使用した図形位がある場合は、
+    外側の図形の角丸=内側の図形の角丸+Paddingとする．
+    \pagebreak
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{images/shapes.png}
+        \caption{デザインシステム Shapes and Others}
+        \label{fig:shapes}
+    \end{figure}
 \bunseki{下村蒔里萌}
 
 \section{システムの構成}
