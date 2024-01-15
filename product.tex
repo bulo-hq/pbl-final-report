@@ -14,7 +14,6 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
     対象ユーザは通勤・通学にバスを利用する人であり，使用するルートは変わらないことが予測できるため，最初に住所を登録をすることで2回目以降は再度住所の検索をする手間を省いている．
     図\ref{fig:feature_register}の左から3枚目の画面では，現在地の住所をサジェストしている．
     住所の入力では，キーワードに対しての予測をサジェストしている．
-    \pagebreak
     \begin{figure}
         \centering
         \includegraphics[width=14cm]{images/feature_register.png}
@@ -27,7 +26,6 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
     一覧は，バスがユーザの乗車するバス停に到着する順に表示される．
     図\ref{fig:feature_td}の右側の画面は，各Time-Distance Viewをタップした際に表示される画面である．
     ここではタップしたTime-Distance Viewと，ユーザとそのバスの現在地がマップ上に表示される．
-    \pagebreak
     \begin{figure}
         \centering
         \includegraphics[width=14cm]{images/feature_td.png}
@@ -39,7 +37,6 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
     これにより，ユーザは「バスに間に合うかどうか」，「バス停でどのくらい待つか」がひとめでわかる．
     実装方法は図\ref{fig:feature_timedistanceview}に示す．
     また，図\ref{fig:feature_timedistanceview}では以下の状況を考えている．
-    \pagebreak
     \begin{quote}
         \begin{itemize}
             \item ユーザの目的地は自宅(田屋入口の近く)
@@ -57,12 +54,10 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
         \caption{Time-Distance View}
         \label{fig:feature_timedistanceview}
     \end{figure}
-    \pagebreak
     図\ref{fig:feature_timedistanceview2}では，想定されるTime-Distance Viewの例を示している．
     図\ref{fig:feature_timedistanceview2}の左から，「ユーザがバスに安心して乗れる状態」
     「ユーザがバス停でかなり待つことが予想できるため，バス停以外の場所で時間をつぶすことができる」
     「ユーザよりバスの方が先にバス停に到着するが，走ることでバスに乗ることができる」状態である．
-    \pagebreak
     \begin{figure}
         \centering
         \includegraphics[width=14cm]{images/feature_timedistanceview2.png}
@@ -80,7 +75,6 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
     16進数のカラーコード(例：\#FF3B30)に具体的な値を与え使いやすくしたプリミティブトークン(例：red)と，
     特定の用途別に定義したセマンティックトークン(例：alert)を定義している．
     Figma上でのプロトタイプや実装では，セマンティックトークンを使用した．
-    \pagebreak
     \begin{figure}
         \centering
         \includegraphics[width=10cm]{images/colors.png}
@@ -89,7 +83,6 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
     \end{figure}
 \subsection{Typographies}
     本サービスのフォントは図\ref{fig:typographies}のように設定した．
-    \pagebreak
     \begin{figure}
         \centering
         \includegraphics[width=10cm]{images/typographies.png}
@@ -99,7 +92,6 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
 \subsection{Icons}
     本サービスのアイコンは図\ref{fig:icons}のように設定した．
     主にMaterial Symbols and Icons\footnote{https://fonts.google.com/icons}を使用し，足りないものはPictogrammers\footnote{https://pictogrammers.com/}を使用した．
-        \pagebreak
         \begin{figure}
             \centering
             \includegraphics[width=10cm]{images/icons.png}
@@ -113,7 +105,6 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
     Cornersは角丸を表し，4, 8, 16と3種類の数字を用意し、コンポーネントの短辺に合わせて角丸の数値を可変する．
     角丸を使用した図形の中に、角丸を使用した図形位がある場合は、
     外側の図形の角丸=内側の図形の角丸+Paddingとする．
-    \pagebreak
     \begin{figure}
         \centering
         \includegraphics[width=10cm]{images/shapes.png}
@@ -123,6 +114,33 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
 \bunseki{下村蒔里萌}
 
 \section{システムの構成}
-\subsection{アーキテクチャ図}
-\subsection{使用した技術}
-\bunseki{}
+本サービスでは，マイクロサービスアーキテクチャを採用している．クライアントは，BFF (Backend for Frontend) を介して，バックエンドのマイクロサービスと通信する．
+バックエンドのマイクロサービス間は，gRPCを用いて通信する．アーキテクチャ図を図\ref{fig:architecture}に示す．
+\begin{figure}
+    \centering
+    \includegraphics[width=14cm]{images/architecture_diagram.png}
+    \caption{アーキテクチャ図}
+    \label{fig:architecture}
+\end{figure}
+\bunseki{及川寛太}
+
+\section{使用した技術}
+\subsection{Flutter}
+    Flutter\footnote{https://flutter.dev/}は，単一のコードベースから，複数のプラットフォームに向けたアプリケーションを構築できるフレームワークである．
+    メリットは，UI (ユーザインタフェース) を複数のプラットフォームで統一できることである．
+    デメリットは，各プラットフォームの最新バージョンに対応するまでに時間がかかるというデメリットがある．
+    当初は，iOSアプリをSwiftで，AndroidアプリをKotlinで開発する予定であったが，開発期間が短いことや人数が少ないことから，1つのコードで2つのプラットフォームに対応できる，Flutterを採用した．
+\bunseki{及川寛太}
+
+\subsection{GraphQL}
+    GraphQL\footnote{https://graphql.org/}は，API用のクエリ言語であり，そのクエリを実行するためのランタイムである．
+    メリットは，クライアントがAPIに対して必要なリソースだけを要求することができること，可読性の高いスキーマにより開発におけるコミュニケーションコストを下げることができることである．
+    デメリットは，REST APIやgRPCと比較して，実行速度が遅いことである．
+\bunseki{及川寛太}
+
+\subsection{PostgreSQL}
+    開発において使用したDBMS (Database Management System) である\footnote{https://www.postgresql.org/}．
+    SQLを用いてデータの操作を行う，RDB (Relational Database) である．
+    メリットは，拡張性，信頼性が高いことである．
+    デメリットは，MySQLと比較して，実行速度が遅いことである．
+\bunseki{及川寛太}
