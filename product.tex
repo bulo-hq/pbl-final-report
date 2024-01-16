@@ -132,22 +132,3 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
 \subsection{Place API}
 地点を検索する際に，入力されたキーワードから，マッチする地点を検索するマイクロサービスである．検索には，OpenStreetMap\footnote{https://www.openstreetmap.org/}のデータからジオコーディングを行う，Nominatim\footnote{https://nominatim.org/}というオープンソースのジオコーディングツールを使用した．
 \bunseki{及川寛太}
-
-\section{使用した技術}
-\subsection{Flutter}
-当初は，iOSアプリをSwiftで，AndroidアプリをKotlinで開発する予定であったが，開発期間が短いことや人数が少ないことから，1つのコードベースで2つのプラットフォームをサポートできる，Flutterを採用した．
-
-\subsection{GraphQL}
-本サービスでは，当初，GraphQLサーバを介して，バックエンドのマイクロサービスと通信していた．
-GraphQLのデメリットや，マイクロサービス間では，gRPCによる通信が行われていたことから，gRPCを用いて通信するように変更した．
-
-\subsection{gRPC}
-本サービスでは，マイクロサービス間通信，および，バックエンドのマイクロサービスとクライアント間通信にgRPCを用いている．
-
-\subsection{PostgreSQL}
-本サービスでは，GTFS-JPの静的データを保存し，各サービスからアクセスするために使用する．
-
-\subsection{Google Cloud Platform}
-本サービスの，データベースサーバはCloudSQL\footnote{https://cloud.google.com/sql/}，バックエンドのマイクロサービスはCloud Run\footnote{https://cloud.google.com/run/}上で稼働している．
-サーバレスサービスにより，サーバの管理にリソースを割くことなく，開発に集中することができる．
-\bunseki{及川寛太}
