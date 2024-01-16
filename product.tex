@@ -100,11 +100,11 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
         \end{figure}
 \subsection{Shapes and Others}
     本サービスの形状とその他のデザインは図\ref{fig:shapes}のように設定した．
-    ElavationやBlurは2つのレイヤー間のz軸上の深度を表す．
+    ElevationやBlurは2つのレイヤー間のz軸上の深度を表す．
     インターフェイス上の最も上位の要素をより強調することで，アクションの重要度を伝える．
     Cornersは角丸を表し，4, 8, 16と3種類の数字を用意し，コンポーネントの短辺に合わせて角丸の数値を可変する．
     角丸を使用した図形の中に，角丸を使用した図形位がある場合は，
-    外側の図形の角丸=内側の図形の角丸+Paddingとする．
+    外側の図形の角丸=内側の図形の角丸+内側の余白とする．
 \begin{figure}
     \centering
     \includegraphics[width=10cm]{images/shapes.png}
@@ -122,11 +122,21 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
     \caption{アーキテクチャ図}
     \label{fig:architecture}
 \end{figure}
+以下に，いくつかのマイクロサービスを抜粋して説明する．
+
+\subsection{クライアントアプリケーション}
+クライアントアプリケーションは，Flutter\footnote{https://flutter.dev/}を用いて開発した．Firebase Authentication\footnote{https://firebase.google.com/products/auth}を用いて，ユーザの匿名認証を行う．生成されたIDトークンを用いて，App Gatewayと通信をする．App Gatewayは，バックエンドのマイクロサービスと通信をして，クライアントが扱いやすい形で，データを返却する．高度なビジネスロジックをフロントエンド側で持たず，できる限りバックエンド側に切り出すようにした．
+
+\subsection{Transit API}
+本サービスで最も重要なマイクロサービスの一つである．クライアントアプリケーション内のTime-Distance ViewやRoute Viewを提供するために必要な情報を，GTFS-JPおよびGTFS-RTのデータから計算する．
+
+\subsection{Place API}
+地点を検索する際に，入力されたキーワードから，マッチする地点を検索するマイクロサービスである．検索には，OpenStreetMap\footnote{https://www.openstreetmap.org/}のデータからジオコーディングを行う，Nominatim\footnote{https://nominatim.org/}というオープンソースのジオコーディングツールを使用した．
 \bunseki{及川寛太}
 
 \section{使用した技術}
 \subsection{Flutter}
-当初は，iOSアプリをSwiftで，AndroidアプリをKotlinで開発する予定であったが，開発期間が短いことや人数が少ないことから，1つのコードで2つのプラットフォームに対応できる，Flutterを採用した．
+当初は，iOSアプリをSwiftで，AndroidアプリをKotlinで開発する予定であったが，開発期間が短いことや人数が少ないことから，1つのコードベースで2つのプラットフォームをサポートできる，Flutterを採用した．
 
 \subsection{GraphQL}
 本サービスでは，当初，GraphQLサーバを介して，バックエンドのマイクロサービスと通信していた．
