@@ -123,15 +123,12 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
     \label{fig:architecture}
 \end{figure}
 以下に，いくつかのマイクロサービスを抜粋して説明する．
-\bunseki{及川寛太}
 
 \subsection{クライアントアプリケーション}
 クライアントアプリケーションは，Flutter\footnote{https://flutter.dev/}を用いて開発した．Firebase Authentication\footnote{https://firebase.google.com/products/auth}を用いて，ユーザの匿名認証を行う．生成されたIDトークンを用いて，App Gatewayと通信をする．App Gatewayは，バックエンドのマイクロサービスと通信をして，クライアントが扱いやすい形で，データを返却する．高度なビジネスロジックをフロントエンド側で持たず，できる限りバックエンド側に切り出すようにした．
-\bunseki{及川寛太}
 
 \subsection{Transit API}
 本サービスで最も重要なマイクロサービスの一つである．クライアントアプリケーション内のTime-Distance ViewやRoute Viewを提供するために必要な情報を，GTFS-JPおよびGTFS-RTのデータから計算する．
-\bunseki{及川寛太}
 
 \subsection{Place API}
 地点を検索する際に，入力されたキーワードから，マッチする地点を検索するマイクロサービスである．検索には，OpenStreetMap\footnote{https://www.openstreetmap.org/}のデータからジオコーディングを行う，Nominatim\footnote{https://nominatim.org/}というオープンソースのジオコーディングツールを使用した．
@@ -140,20 +137,16 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
 \section{使用した技術}
 \subsection{Flutter}
 当初は，iOSアプリをSwiftで，AndroidアプリをKotlinで開発する予定であったが，開発期間が短いことや人数が少ないことから，1つのコードベースで2つのプラットフォームをサポートできる，Flutterを採用した．
-\bunseki{及川寛太}
 
 \subsection{GraphQL}
 本サービスでは，当初，GraphQLサーバを介して，バックエンドのマイクロサービスと通信していた．
 GraphQLのデメリットや，マイクロサービス間では，gRPCによる通信が行われていたことから，gRPCを用いて通信するように変更した．
-\bunseki{及川寛太}
 
 \subsection{gRPC}
 本サービスでは，マイクロサービス間通信，および，バックエンドのマイクロサービスとクライアント間通信にgRPCを用いている．
-\bunseki{及川寛太}
 
 \subsection{PostgreSQL}
 本サービスでは，GTFS-JPの静的データを保存し，各サービスからアクセスするために使用する．
-\bunseki{及川寛太}
 
 \subsection{Google Cloud Platform}
 本サービスの，データベースサーバはCloudSQL\footnote{https://cloud.google.com/sql/}，バックエンドのマイクロサービスはCloud Run\footnote{https://cloud.google.com/run/}上で稼働している．
