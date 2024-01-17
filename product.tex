@@ -24,7 +24,7 @@ BuLoは，バスに乗り遅れたくないがバスを効率的に使いたい�
 ユーザが住所を登録したあと，ユーザがアプリを開いた際は図\ref{fig:feature_td}の画面を表示する．
 図\ref{fig:feature_td}の左側の画面は，後述するTime-Distance Viewの一覧である．
 一覧は，バスがユーザの乗車するバス停に到着する順に表示される．
-図\ref{fig:feature_td}の右側の画面は，各Time-Distance Viewをタップした際に表示される画面である．
+図\ref{fig:feature_td}の右側の画面は，各Time-Distance Viewをタップした際に表示されるRoute Viewである．
 ここではタップしたTime-Distance Viewと，ユーザとそのバスの現在地がマップ上に表示される．
 \begin{figure}[H]
     \centering
@@ -39,7 +39,7 @@ Time-Distance Viewとは，ユーザの現在地・バスの現在地・バス�
 また，図\ref{fig:feature_timedistanceview}では以下の状況を考えている．
 \begin{quote}
     \begin{itemize}
-        \item ユーザの目的地は自宅(田屋入口の近く)
+        \item ユーザの目的地は自宅(田家入口の近く)
         \item 現在地からの最寄りのバス停ははこだて未来大学駅
         \item ユーザが乗るバスは55G
         \item ユーザが自宅に行くまでにかかる料金は220円
@@ -127,7 +127,7 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
 クライアントアプリケーションは，Flutter\footnote{https://flutter.dev/}を用いて開発した．Firebase Authentication\footnote{https://firebase.google.com/products/auth}を用いて，ユーザの匿名認証を行う．生成されたIDトークンを用いて，App Gatewayと通信をする．App Gatewayは，バックエンドのマイクロサービスと通信をして，クライアントが扱いやすい形で，データを返却する．高度なビジネスロジックをフロントエンド側で持たず，できる限りバックエンド側に切り出すようにした．
 
 \subsection{Transit API}
-本サービスで最も重要なマイクロサービスの一つである．クライアントアプリケーション内のTime-Distance ViewやRoute Viewを提供するために必要な情報を，GTFS-JPおよびGTFS-RTのデータから計算する．
+本サービスで最も重要なマイクロサービスの1つである．クライアントアプリケーション内のTime-Distance ViewやRoute Viewを提供するために必要な情報を，GTFS-JPおよびGTFS-RTのデータから計算する．
 
 \subsection{Place API}
 地点を検索する際に，入力されたキーワードから，マッチする地点を検索するマイクロサービスである．検索には，OpenStreetMap\footnote{https://www.openstreetmap.org/}のデータからジオコーディングを行う，Nominatim\footnote{https://nominatim.org/}というオープンソースのジオコーディングツールを使用した．
