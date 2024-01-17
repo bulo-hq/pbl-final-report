@@ -127,7 +127,7 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
 クライアントアプリケーションは，Flutter\footnote{https://flutter.dev/}を用いて開発した．Firebase Authentication\footnote{https://firebase.google.com/products/auth}を用いて，ユーザの匿名認証を行う．生成されたIDトークンを用いて，App Gatewayと通信をする．App Gatewayは，バックエンドのマイクロサービスと通信をして，クライアントが扱いやすい形で，データを返却する．高度なビジネスロジックをフロントエンド側で持たず，できる限りバックエンド側に切り出すようにした．
 
 \subsection{Transit API}
-本サービスで最も重要なマイクロサービスの1つである．クライアントアプリケーション内のTime-Distance ViewやRoute Viewを提供するために必要な情報を，GTFS-JPおよびGTFS-RTのデータから計算する．
+本サービスで最も重要なマイクロサービスの1つである．クライアントアプリケーション内のTime-Distance ViewやRoute Viewを提供するために必要な情報を，GTFS-JP\footnote{https://www.gtfs.jp/}およびGTFS-RT\footnote{https://developers.google.com/transit/gtfs-realtime?hl=ja}のデータから計算する．
 
 \subsection{Place API}
 地点を検索する際に，入力されたキーワードから，マッチする地点を検索するマイクロサービスである．検索には，OpenStreetMap\footnote{https://www.openstreetmap.org/}のデータからジオコーディングを行う，Nominatim\footnote{https://nominatim.org/}というオープンソースのジオコーディングツールを使用した．
