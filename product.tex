@@ -67,9 +67,8 @@ Time-Distance Viewとは，ユーザの現在地・バスの現在地・バス�
 \bunseki{下村蒔里萌}
 
 \section{デザインシステム}
-本アプリは，簡潔で見やすく情報量の絞られたデザインを目指している．
-アジャイル開発を行う上で，手戻りの少ない一貫性のあるUI改善を行うため，また，エンジニアとデザイナーの共通認識を図るために，
-以下のデザインシステムを設定した．
+本サービスでは，デザインシステムを導入している．
+Colors，Typographies，Icons，Shapes and Othersの4つのカテゴリに分けて，デザインシステムを構築した．
 \subsection{Colors}
 本サービスのカラーパレットは図\ref{fig:feature_colors}のように設定した．
 16進数のカラーコード(例：\#FF3B30)に具体的な値を与え使いやすくしたプリミティブトークン(例：red)と，
@@ -77,7 +76,7 @@ Time-Distance Viewとは，ユーザの現在地・バスの現在地・バス�
 Figma上でのプロトタイプや実装では，セマンティックトークンを使用した．
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/colors.png}
+    \includegraphics[width=12cm]{images/colors.png}
     \caption{デザインシステム Colors}
     \label{fig:feature_colors}
 \end{figure}
@@ -85,7 +84,7 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
 本サービスのフォントは図\ref{fig:typographies}のように設定した．
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/typographies.png}
+    \includegraphics[width=7cm]{images/typographies.png}
     \caption{デザインシステム Typographies}
     \label{fig:typographies}
 \end{figure}
@@ -94,7 +93,7 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
     主にMaterial Symbols and Icons\footnote{https://fonts.google.com/icons}を使用し，足りないものはPictogrammers\footnote{https://pictogrammers.com/}を使用した．
         \begin{figure}[H]
             \centering
-            \includegraphics[width=10cm]{images/icons.png}
+            \includegraphics[width=14cm]{images/icons.png}
             \caption{デザインシステム Icons}
             \label{fig:icons}
         \end{figure}
@@ -107,7 +106,7 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
     外側の図形の角丸=内側の図形の角丸+内側の余白とする．
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/shapes.png}
+    \includegraphics[width=14cm]{images/shapes.png}
     \caption{デザインシステム Shapes and Others}
     \label{fig:shapes}
 \end{figure}
@@ -132,23 +131,4 @@ Figma上でのプロトタイプや実装では，セマンティックトーク
 
 \subsection{Place API}
 地点を検索する際に，入力されたキーワードから，マッチする地点を検索するマイクロサービスである．検索には，OpenStreetMap\footnote{https://www.openstreetmap.org/}のデータからジオコーディングを行う，Nominatim\footnote{https://nominatim.org/}というオープンソースのジオコーディングツールを使用した．
-\bunseki{及川寛太}
-
-\section{使用した技術}
-\subsection{Flutter}
-当初は，iOSアプリをSwiftで，AndroidアプリをKotlinで開発する予定であったが，開発期間が短いことや人数が少ないことから，1つのコードベースで2つのプラットフォームをサポートできる，Flutterを採用した．
-
-\subsection{GraphQL}
-本サービスでは，当初，GraphQLサーバを介して，バックエンドのマイクロサービスと通信していた．
-GraphQLのデメリットや，マイクロサービス間では，gRPCによる通信が行われていたことから，gRPCを用いて通信するように変更した．
-
-\subsection{gRPC}
-本サービスでは，マイクロサービス間通信，および，バックエンドのマイクロサービスとクライアント間通信にgRPCを用いている．
-
-\subsection{PostgreSQL}
-本サービスでは，GTFS-JPの静的データを保存し，各サービスからアクセスするために使用する．
-
-\subsection{Google Cloud Platform}
-本サービスの，データベースサーバはCloudSQL\footnote{https://cloud.google.com/sql/}，バックエンドのマイクロサービスはCloud Run\footnote{https://cloud.google.com/run/}上で稼働している．
-サーバレスサービスにより，サーバの管理にリソースを割くことなく，開発に集中することができる．
 \bunseki{及川寛太}
